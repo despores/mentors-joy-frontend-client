@@ -8,7 +8,7 @@ function App() {
     return (
     <Grommet full theme={theme} background={"light-3"}>
         <Page kind="narrow">
-            <PageContent>
+            <PageContent className="PageContent">
                 <Box
                     align="center" 
                     justify="center" 

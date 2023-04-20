@@ -9,8 +9,9 @@ export interface NavBarProps {
     searchActive: boolean
 }
 
-function StudentNavBar(searchActive: NavBarProps) {
+function StudentNavBar(studentNavBarProps: NavBarProps) {
     const navigate = useNavigate();
+    const searchActive = studentNavBarProps.searchActive
 
     return (
         <Box
@@ -20,17 +21,20 @@ function StudentNavBar(searchActive: NavBarProps) {
                 direction="row"
                 gap="10px"
                 pad={{horizontal: "3.5%", top: "2.9%"}}
+                className="navbar"
             >
-                <Button
-                    label='Загрузить шаблон из файла'
-                    style={{...(!searchActive ? orangeButtonStyle : greyButtonStyle),  whiteSpace: "nowrap"}}
-                    onClick={() => navigate("/student")}
-                />
-                <Button
-                    label='Поиск шаблона по эл.почте'
-                    style={{...(searchActive ? orangeButtonStyle : greyButtonStyle),  whiteSpace: "nowrap"}}
-                    onClick={() => navigate("/search")}
-                />
+                <div className="buttons">
+                    <Button
+                        label='Загрузить шаблон из файла'
+                        style={{...(!searchActive ? orangeButtonStyle : greyButtonStyle),  whiteSpace: "nowrap"}}
+                        onClick={() => navigate("/student")}
+                    />
+                    <Button
+                        label='Поиск шаблона по эл.почте'
+                        style={{...(searchActive ? orangeButtonStyle : greyButtonStyle),  whiteSpace: "nowrap"}}
+                        onClick={() => navigate("/search")}
+                    />
+                </div>
                 <Button
                     justify='center'
                     icon={<Logout color="#AFAFAF" size="16px" />}

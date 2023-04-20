@@ -1,0 +1,74 @@
+div.rounded > div {
+    border: none;
+}
+
+div.rounded input {
+    border: 1px solid #AFAFAF !important;
+    padding: 13px !important;
+    text-align: center;
+    font-weight: 400;
+}
+
+/*div.rounded input:focus {*/
+/*    border-color: rgb(233, 93, 34) !important;*/
+/*}*/
+
+div.rounded span {
+    text-align: center;
+    margin-bottom: -10px;
+}
+
+div[class*="FileInput__ContentsBox"] {
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #AFAFAF;
+}
+
+a[class^="StyledAnchor"]:hover {
+    text-decoration: none;
+}
+
+.navbar svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 720px) {
+    .navbar .buttons button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .navbar {
+        height: 100% !important;
+    }
+
+    .navbar > button {
+        margin-top: -6px;
+    }
+}
+
+@media (max-width: 700px) {
+    .gridButtons > div {
+        grid-template-columns: none !important;
+        width: 93%;
+    }
+
+    .gridButtons > div > button {
+        width: 100%;
+        min-height: 60px;
+    }
+
+    .gridButtons h5 {
+        font-size: 20px;
+        line-height: 20px;
+        max-width: 336px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    .loginForm input, .loginForm button {
+        width: 90% !important;
+    }
+}
