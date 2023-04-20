@@ -1,5 +1,5 @@
 # mentors_joy_frontend
-##How to start:
+##Запуск:
 ```bash
 docker-compose up -d --build
 ```
