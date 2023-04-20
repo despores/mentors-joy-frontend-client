@@ -61,7 +61,7 @@ function SearchPage() {
                     templateData.set(key, value as TemplateItem);
                 });
                 console.log(templateData)
-                navigate('/fill_template', {state: {templateData: templateData, docxFileData: DOCXFile}})
+                navigate('/fill_template', {state: {templateData: templateData, docxFileData: DOCXFile, redirected: "yes"}})
             };
         }
     },[JSONIsDownloaded, DOCXIsDownloaded])

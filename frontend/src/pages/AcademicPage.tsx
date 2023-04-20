@@ -14,6 +14,7 @@ import {downloadTemplate} from "../utils";
 import {useNavigate} from 'react-router-dom';
 import {Attachment, Logout} from 'grommet-icons';
 import {greyButtonStyle, orangeFillButtonStyle} from '../theme';
+import { removeAuthToken } from '../services/authentication';
 
 function AcademicPage() {
     const [fileData, setFileData] = React.useState<File>();
@@ -75,7 +76,10 @@ function AcademicPage() {
                     justify='center'
                     icon={<Logout color="#AFAFAF"/>}
                     style={{...greyButtonStyle, height: "30px", width: "30px"}}
-                    onClick={() => navigate("/")}
+                    onClick={() => {
+                        removeAuthToken();
+                        navigate("/");
+                    }}
                 />
             </Box>
             <Box

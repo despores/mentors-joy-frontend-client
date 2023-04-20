@@ -13,7 +13,7 @@ import {
     TextArea,
     TextInput
 } from "grommet";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, Navigate} from "react-router-dom";
 import {TemplateCreationData, TemplateItems, TemplateKeys} from "../types/template";
 import {saveJSON} from "../utils";
 import {greyButtonStyle, orangeFillButtonStyle} from "../theme";
@@ -32,9 +32,13 @@ function CreateTemplatePage() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const templateData: TemplateKeys = location.state.templateData;
-    const filename: string = location.state.filename;
-    const docx_file: File = location.state.docx_file;
+    const templateData: TemplateKeys = location.state?.templateData || {};
+    const filename: string = location.state?.filename || "";
+    const docx_file: File = location.state?.docx_file || {};
+
+    if (!templateData || ! filename || !docx_file) {
+        return <Navigate to="/" />;
+    }
 
 
     const handleSubmit = async (data: Record<string, string>) => {
@@ -60,9 +64,9 @@ function CreateTemplatePage() {
             const jsonBlob = new Blob([JSON.stringify(items)], { type: "application/json" });
             const jsonTemplate = new File([jsonBlob], `${filename}.json`, { type: "application/json" });
             const templateData: TemplateCreationData = {
-                docx_template: docx_file,
+                docx_template: docx_file!,
                 json_template: jsonTemplate,
-                name: filename,
+                name: filename!,
             }
             await createTemplate({templateData, authToken})
         }
@@ -103,7 +107,7 @@ function CreateTemplatePage() {
                     onSubmit={({value}) => handleSubmit(value)}
                 >
 
-                    {templateData.variables.map((field, index) => (
+                    {templateData?.variables.map((field, index) => (
                         <Card key={field} background="light-1" pad={"medium"} margin={"medium"}
                               style={{paddingBottom: "15px"}}>
                             <CardHeader width={"100%"} style={{display: "block"}}>

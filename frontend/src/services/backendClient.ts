@@ -2,7 +2,7 @@ import axios, {AxiosResponse} from "axios";
 import {Template, TemplateCreationData, TemplateKeys} from "../types/template";
 import {User, UserRegistrationData, UserToken} from "../types/user";
 
-const BASE_URL = 'http://127.0.0.1:8000'
+const BASE_URL = 'http://193.124.112.36:8000'
 
 export async function convertFileToTemplate(file: File) {
     const formData = new FormData();

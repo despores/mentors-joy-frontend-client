@@ -21,7 +21,7 @@ function StudentPage() {
 
     useEffect(() => {
         if (templateData) {
-            navigate('/fill_template', {state: {templateData: templateData, docxFileData: docxFileData}})
+            navigate('/fill_template', {state: {templateData: templateData, docxFileData: docxFileData, redirected: "yes"}})
         }
     }, [templateData, docxFileData, navigate])
 

@@ -12,7 +12,7 @@ import {
     TextArea
 } from "grommet";
 import {FormPrevious} from "grommet-icons";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, Navigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import {useMutation} from "react-query";
 import {TemplateItem} from "../types/template";
@@ -31,12 +31,13 @@ function FillTemplatePage() {
     );
 
     const location = useLocation();
-    const templateData: Map<string, TemplateItem> = location.state.templateData;
-    const docxFileData: File = location.state.docxFileData;
+    const templateData: Map<string, TemplateItem>= location.state?.templateData || {};
+    const docxFileData: File= location.state?.docxFileData || {};
+    const redirected: string = location.state?.redirected || "";
 
     useEffect(() => {
         if (pdf_file) {
-            saveFile(pdf_file, `${docxFileData.name}.pdf`);
+            saveFile(pdf_file, `${docxFileData?.name}.pdf`);
         }
     }, [docxFileData, pdf_file])
 
@@ -46,11 +47,15 @@ function FillTemplatePage() {
         }
     }, [isSuccess, navigate])
 
+    if (!redirected) {
+        return <Navigate to="/" />;
+    }
+
 
     const handleFormSubmit = (value: Record<string, Object>) => {
         sendForm({
             data: value,
-            file: docxFileData,
+            file: docxFileData!,
         })
     };
 
